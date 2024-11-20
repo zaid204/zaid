@@ -27,14 +27,19 @@ function play() {
   }
 }
 
-// Hide the controls (pause button) on screen click
+// Add an event listener to toggle controls visibility on click or touch
 const playerContainer = document.querySelector(".plyr");
 
 if (playerContainer) {
-  playerContainer.addEventListener("click", () => {
+  // Function to toggle visibility
+  const toggleControls = () => {
     const controls = playerContainer.querySelector(".plyr__controls");
     if (controls) {
       controls.style.opacity = controls.style.opacity === "0" ? "1" : "0";
     }
-  });
+  };
+
+  // Add both click and touchstart events for cross-device compatibility
+  playerContainer.addEventListener("click", toggleControls);
+  playerContainer.addEventListener("touchstart", toggleControls);
 }
