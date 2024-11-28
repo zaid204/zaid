@@ -4,43 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Video Player</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            background-color: #f4f4f9;
-        }
-
-        input {
-            width: 300px;
-            padding: 10px;
-            margin: 20px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
-        button {
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #0056b3;
-        }
-
-        video {
-            max-width: 90%;
-            margin-top: 20px;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -48,28 +12,14 @@
     <input type="text" id="vid" placeholder="Enter video URL here" />
     <button onclick="play()">Play Video</button>
 
-    <video id="player" controls>
-        <source id="videoSource" src="" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
+    <div class="video-container">
+        <video id="player" onclick="toggleControls()" controls>
+            <source id="videoSource" src="" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
 
-    <script>
-        function play() {
-            const videoUrl = document.getElementById("vid").value;
-            if (!videoUrl) {
-                alert("Please enter a video URL.");
-            } else {
-                // Update the video player with the entered URL
-                document.getElementById("videoSource").src = videoUrl;
-                document.getElementById("player").load(); // Reload the player with the new source
-                document.getElementById("player").play(); // Start playing the video
-                document.getElementById("player").scrollIntoView({
-                    behavior: "smooth",
-                });
-            }
-        }
-    </script>
+    <script src="script.js"></script>
 
 </body>
 </html>
-
